@@ -196,6 +196,31 @@
       margin-bottom: 10px;
       cursor: pointer;
     }
+
+      .audio-button {
+          background-color: skyblue;
+          border-radius: 50%;
+          width: 30px;
+          height: 30px;
+          border: none;
+          cursor: pointer;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-size: 13px;
+          transition: all 0.3s ease;
+          box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      }
+
+      .audio-button:hover {
+          background-color: #7dd3fc;
+          transform: scale(1.1);
+          box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+      }
+
+      .audio-button:active {
+          transform: scale(0.95);
+      }
     
     /* Tablet styles */
     @media (max-width: 768px) {
@@ -413,6 +438,54 @@
   </style>
 </head>
 <body>
+  <audio id="audio-wo" preload="auto">
+        <source src="./audioUD1/我.m4a" type="audio/mp4">
+    </audio>
+    <audio id="audio-ni" preload="auto">
+        <source src="./audioUD1/你.m4a" type="audio/mp4">
+    </audio>
+    <audio id="audio-ta1" preload="auto">
+        <source src="./audioUD1/他她它.m4a" type="audio/mp4">
+    </audio>
+    <audio id="audio-ta2" preload="auto">
+        <source src="./audioUD1/他她它.m4a" type="audio/mp4">
+    </audio>
+    <audio id="audio-ta3" preload="auto">
+        <source src="./audioUD1/他她它.m4a" type="audio/mp4">
+    </audio>
+    <audio id="audio-men" preload="auto">
+        <source src="./audioUD1/们.m4a" type="audio/mp4">
+    </audio>
+    <audio id="audio-ming" preload="auto">
+        <source src="./audioUD1/名.m4a" type="audio/mp4">
+    </audio>
+    <audio id="audio-zi" preload="auto">
+        <source src="./audioUD1/字.m4a" type="audio/mp4">
+    </audio>
+    <audio id="audio-jiao" preload="auto">
+        <source src="./audioUD1/叫.m4a" type="audio/mp4">
+    </audio>
+     <audio id="audio-shen" preload="auto">
+        <source src="./audioUD1/什.m4a" type="audio/mp4">
+    </audio>
+    <audio id="audio-me" preload="auto">
+        <source src="./audioUD1/么.m4a" type="audio/mp4">
+    </audio>
+        <audio id="audio-ren" preload="auto">
+        <source src="./audioUD1/认.m4a" type="audio/mp4">
+    </audio>
+    <audio id="audio-shi" preload="auto">
+        <source src="./audioUD1/识.m4a" type="audio/mp4">
+    </audio>
+     <audio id="audio-hen" preload="auto">
+        <source src="./audioUD1/很.m4a" type="audio/mp4">
+    </audio>
+    <audio id="audio-gao" preload="auto">
+        <source src="./audioUD1/高.m4a" type="audio/mp4">
+    </audio>
+    <audio id="audio-xing" preload="auto">
+        <source src="./audioUD1/兴.m4a" type="audio/mp4">
+    </audio>
   <div class="container">
     <button class="mobile-menu-toggle" onclick="toggleMobileMenu()">☰ Menú de Caracteres</button>
     
@@ -425,6 +498,9 @@
       <div id="current-word"></div>
       
       <div class="character-display-section">
+          <button class="audio-button" id="audio-button" onclick="playAudio()">
+            🔊 
+          </button>
         <div id="character-target-div"></div>
         <button class="replay-button" onclick="replayAnimation()">
           ↻ Repetir animación
@@ -456,22 +532,22 @@
 
   <script>
     const characters = [
-      { char: '我', pinyin: 'wǒ', spanish: 'yo' },
-      { char: '你', pinyin: 'nǐ', spanish: 'tú' },
-      { char: '他', pinyin: 'tā', spanish: 'él' },
-      { char: '她', pinyin: 'tā', spanish: 'ella' },
-      { char: '它', pinyin: 'tā', spanish: 'ello' },
-      { char: '们', pinyin: 'men', spanish: 'terminación de plural' },
-      { char: '名', pinyin: 'míng', spanish: 'nombre (parte de míngzi)' },
-      { char: '字', pinyin: 'zǐ', spanish: 'carácter/escritura (parte de míngzi)' },
-      { char: '叫', pinyin: 'jiào', spanish: 'llamarse' },
-      { char: '什', pinyin: 'shén', spanish: 'qué (parte de shénme)' },
-      { char: '么', pinyin: 'me', spanish: '(partícula, parte de shénme)' },
-      { char: '认', pinyin: 'rèn', spanish: 'reconocer (parte de rènshi)' },
-      { char: '识', pinyin: 'shí', spanish: 'conocer/saber (parte de rènshi)' },
-      { char: '很', pinyin: 'hěn', spanish: 'muy' },
-      { char: '高', pinyin: 'gāo', spanish: 'alto (parte de gāoxìng)' },
-      { char: '兴', pinyin: 'xìng', spanish: 'feliz/alegre (parte de gāoxìng)' }
+      { char: '我', pinyin: 'wǒ', spanish: 'yo', audioId:'audio-wo'},
+      { char: '你', pinyin: 'nǐ', spanish: 'tú', audioId:'audio-ni'},
+      { char: '他', pinyin: 'tā', spanish: 'él', audioId:'audio-ta1'},
+      { char: '她', pinyin: 'tā', spanish: 'ella', audioId:'audio-ta2'},
+      { char: '它', pinyin: 'tā', spanish: 'ello', audioId:'audio-ta3'},
+      { char: '们', pinyin: 'men', spanish: 'terminación de plural', audioId:'audio-men'},
+      { char: '名', pinyin: 'míng', spanish: 'nombre (parte de míngzi)', audioId:'audio-ming'},
+      { char: '字', pinyin: 'zǐ', spanish: 'carácter/escritura (parte de míngzi)', audioId:'audio-zi'},
+      { char: '叫', pinyin: 'jiào', spanish: 'llamarse', audioId:'audio-jiao'},
+      { char: '什', pinyin: 'shén', spanish: 'qué (parte de shénme)', audioId:'audio-shen'},
+      { char: '么', pinyin: 'me', spanish: '(partícula, parte de shénme)', audioId:'audio-me'},
+      { char: '认', pinyin: 'rèn', spanish: 'reconocer (parte de rènshi)', audioId:'audio-ren'},
+      { char: '识', pinyin: 'shí', spanish: 'conocer/saber (parte de rènshi)', audioId:'audio-shi'},
+      { char: '很', pinyin: 'hěn', spanish: 'muy', audioId:'audio-hen'},
+      { char: '高', pinyin: 'gāo', spanish: 'alto (parte de gāoxìng)', audioId:'audio-gao'},
+      { char: '兴', pinyin: 'xìng', spanish: 'feliz/alegre (parte de gāoxìng)', audioId:'audio-xing'}
     ];
 
     let currentIndex = 0;
@@ -669,6 +745,14 @@
         showCharacter(currentIndex);
       }, 250);
     });
+
+      function playAudio() {
+            const audioId = characters[currentIndex].audioId;
+            const audio = document.getElementById(audioId);
+            if (audio) {
+                audio.play();
+            }
+        }
   </script>
 </body>
 </html>
